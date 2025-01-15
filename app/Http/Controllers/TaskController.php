@@ -33,6 +33,7 @@ class TaskController extends Controller
             ], 404);
         }
         
+        $request->merge(['project_id' => $project_id]);
         $task = Task::create($request->all());
         return TaskResource::make($task)->response()->setStatusCode(201);
     }
@@ -65,7 +66,7 @@ class TaskController extends Controller
             ], 404);
         }
         
-        return TaskResource::collection(Task::where('project_id', $project_id));
+        return TaskResource::collection(Task::where('project_id', $project_id)->get());
     }
 
     /**
@@ -81,6 +82,16 @@ class TaskController extends Controller
                 'message' => 'Task not found',
             ], 404);
         }
+
+        $project = Project::find($request->project_id);
+
+        if (!$project) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Project not found',
+            ], 404);
+        }
+
         $task->update($request->all());
 
         return new TaskResource($task);

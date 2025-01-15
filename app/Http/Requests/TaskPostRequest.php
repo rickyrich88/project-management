@@ -26,7 +26,6 @@ class TaskPostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'project_id' => ['required', 'numeric'],
             'title' => ['required','string'],
             'description' => ['nullable','string'],
             'assigned_to' => ['nullable','string'],
