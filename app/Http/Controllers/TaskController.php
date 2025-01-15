@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TaskPostRequest;
 use App\Http\Resources\Task as TaskResource;
 use App\Models\Project;
 use App\Models\Task;
@@ -20,7 +21,7 @@ class TaskController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, int $project_id)
+    public function store(TaskPostRequest $request, int $project_id)
     {
         $project = Project::find($project_id);
 
@@ -69,7 +70,7 @@ class TaskController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, int $id)
+    public function update(TaskPostRequest $request, int $id)
     {
         $task = Task::find($id);
 
