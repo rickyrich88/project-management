@@ -26,6 +26,7 @@ class TaskController extends Controller
 
         if (!$project) {
             return response()->json([
+                'success' => false,
                 'message' => 'Project not found',
             ], 404);
         }
@@ -43,6 +44,7 @@ class TaskController extends Controller
 
         if (!$task) {
             return response()->json([
+                'success' => false,
                 'message' => 'Task not found',
             ], 404);
         }
@@ -56,6 +58,7 @@ class TaskController extends Controller
 
         if (!$project) {
             return response()->json([
+                'success' => false,
                 'message' => 'Project not found',
             ], 404);
         }
@@ -72,6 +75,7 @@ class TaskController extends Controller
 
         if (!$task) {
             return response()->json([
+                'success' => false,
                 'message' => 'Task not found',
             ], 404);
         }
@@ -89,6 +93,7 @@ class TaskController extends Controller
 
         if (!$task) {
             return response()->json([
+                'success' => false,
                 'message' => 'Task not found',
             ], 404);
         }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProjectPostRequest;
 use App\Http\Resources\Project as ProjectResource;
 use App\Models\Project;
 use Illuminate\Http\Request;
@@ -19,7 +20,7 @@ class ProjectController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ProjectPostRequest $request)
     {
         $project = Project::create($request->all());
         return ProjectResource::make($project)->response()->setStatusCode(201);
@@ -34,6 +35,7 @@ class ProjectController extends Controller
 
         if (!$project) {
             return response()->json([
+                'success' => false,
                 'message' => 'Project not found',
             ], 404);
         }
@@ -44,12 +46,13 @@ class ProjectController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, int $id)
+    public function update(ProjectPostRequest $request, int $id)
     {
         $project = Project::find($id);
 
         if (!$project) {
             return response()->json([
+                'success' => false,
                 'message' => 'Project not found',
             ], 404);
         }
@@ -67,12 +70,14 @@ class ProjectController extends Controller
 
         if (!$project) {
             return response()->json([
+                'success' => false,
                 'message' => 'Project not found',
             ], 404);
         }
         Project::destroy($id);
         
         return response()->json([
+            'success' => true,
             'message' => 'Project deleted succesfully'
         ], 204);
     }
