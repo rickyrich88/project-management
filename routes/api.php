@@ -14,8 +14,8 @@ Route::prefix('projects')->group(function () {
 
     Route::delete('/{id}', [ProjectController::class, 'destroy']);
     
-    Route::get('/{project_id}/tasks', [TaskController::class, 'showProjectTasks']);
-    Route::post('/{project_id}/tasks', [TaskController::class, 'storeForProject']);
+    Route::get('/{project_id}/tasks', [TaskController::class, 'showByProject']);
+    Route::post('/{project_id}/tasks', [TaskController::class, 'store']);
 });
 
 Route::prefix('tasks')->group(function () {
