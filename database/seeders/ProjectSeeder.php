@@ -15,7 +15,7 @@ class ProjectSeeder extends Seeder
     {
         Project::factory()
                     ->count(5)
-                    ->hasTask(4)
+                    ->hasTasks(4)
                     ->create();
     }
 }
