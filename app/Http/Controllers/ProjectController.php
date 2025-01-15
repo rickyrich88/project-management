@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProjectPostRequest;
+use App\Http\Requests\ProjectPutRequest;
 use App\Http\Resources\Project as ProjectResource;
 use App\Models\Project;
 use Illuminate\Http\Request;
@@ -46,7 +47,7 @@ class ProjectController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(ProjectPostRequest $request, int $id)
+    public function update(ProjectPutRequest $request, int $id)
     {
         $project = Project::find($id);
 
