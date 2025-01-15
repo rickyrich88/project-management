@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\ProjectStatusEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->longText('description')->nullable();
-            $table->enum('status', ['open', 'in_progress', 'completed']);
+            $table->enum('status', ProjectStatusEnum::cases());
             $table->timestamps();
         });
     }
