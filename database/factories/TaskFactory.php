@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\TaskStatusEnum;
 use App\Models\Project;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -23,7 +24,7 @@ class TaskFactory extends Factory
             'description' => $this->faker->paragraph,
             'assigned_to' => $this->faker->word,
             'due_date' => $this->faker->date,
-            'status' => $this->faker->randomElement(['to_do', 'in_progress', 'done']),
+            'status' => $this->faker->randomElement(TaskStatusEnum::cases()),
         ];
     }
 }

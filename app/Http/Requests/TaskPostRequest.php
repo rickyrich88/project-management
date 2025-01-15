@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\TaskStatusEnum;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
@@ -33,7 +34,7 @@ class TaskPostRequest extends FormRequest
             'status' => [
                 'required',
                 'string',
-                Rule::in(['to_do', 'in_progress', 'done'])
+                Rule::in(TaskStatusEnum::cases()),
             ],
         ];
     }

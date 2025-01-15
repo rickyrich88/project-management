@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\ProjectStatusEnum;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,7 +20,7 @@ class ProjectFactory extends Factory
         return [
             'title' => $this->faker->word,
             'description' => $this->faker->paragraph,
-            'status' => $this->faker->randomElement(['open', 'in_progress', 'completed']),
+            'status' => $this->faker->randomElement(ProjectStatusEnum::cases()),
         ];
     }
 }
