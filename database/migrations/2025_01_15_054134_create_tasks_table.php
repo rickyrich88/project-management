@@ -19,7 +19,7 @@ return new class extends Migration
             $table->longText('description')->nullable();
             $table->string('assigned_to')->nullable();
             $table->date('due_date')->nullable();
-            $table->enum('status',['to_do', 'in_progress', 'done']);
+            $table->string('status');
             $table->timestamps();
         });
     }
