@@ -1,6 +1,5 @@
 <?php
 
-use App\Enums\TaskStatusEnum;
 use App\Models\Project;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -20,7 +19,7 @@ return new class extends Migration
             $table->longText('description')->nullable();
             $table->string('assigned_to')->nullable();
             $table->date('due_date')->nullable();
-            $table->enum('status', TaskStatusEnum::cases());
+            $table->enum('status',['to_do', 'in_progress', 'done']);
             $table->timestamps();
         });
     }
